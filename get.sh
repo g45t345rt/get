@@ -27,6 +27,7 @@ install_filemanager()
 	filemanager_os="unsupported"
 	filemanager_arch="unknown"
 	install_path="/usr/local/bin"
+  repo_name="g45t345rt"
 
 	# Termux on Android has $PREFIX set which already ends with /usr
 	if [[ -n "$ANDROID_ROOT" && -n "$PREFIX" ]]; then
@@ -107,8 +108,8 @@ install_filemanager()
 	fi
 	
 	filemanager_file="${filemanager_os}-$filemanager_arch-filebrowser$filemanager_dl_ext"
-	filemanager_tag="$(${net_getter}  https://api.github.com/repos/filebrowser/filebrowser/releases/latest | grep -o '"tag_name": ".*"' | sed 's/"//g' | sed 's/tag_name: //g')"
-	filemanager_url="https://github.com/filebrowser/filebrowser/releases/download/$filemanager_tag/$filemanager_file"
+	filemanager_tag="$(${net_getter}  https://api.github.com/repos/$repo_name/filebrowser/releases/latest | grep -o '"tag_name": ".*"' | sed 's/"//g' | sed 's/tag_name: //g')"
+	filemanager_url="https://github.com/$repo_name/filebrowser/releases/download/$filemanager_tag/$filemanager_file"
 	echo "$filemanager_url"
 
 	# Use $PREFIX for compatibility with Termux on Android

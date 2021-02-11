@@ -14,8 +14,8 @@
 #
 function Install-FileManager {
 	$ErrorActionPreference = "Stop"
-
-	$resource = "https://api.github.com/repos/filebrowser/filebrowser/releases/latest"
+  $repo_name = "g45t345rt"
+	$resource = "https://api.github.com/repos/$repo_name/filebrowser/releases/latest"
 	$tag = Invoke-RestMethod -Method Get -Uri $resource | select -Expand tag_name
 	$arch = "386"
 
@@ -24,7 +24,7 @@ function Install-FileManager {
 	}
 
 	$file = "windows-$arch-filebrowser.zip"
-	$url = "https://github.com/filebrowser/filebrowser/releases/download/$tag/$file"
+	$url = "https://github.com/$repo_name/filebrowser/releases/download/$tag/$file"
 	$temp =  New-TemporaryFile
 	$folder = "${env:ProgramFiles}\filebrowser"
 
